@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1"/>
+    <title>XR.Screenshot test</title>
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .photo-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 10;
+        display: none;
+        padding: 1rem;
+      }
+
+      .photo-container img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="photo-container" id="photo-container">
+      <img id="photo" />
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
+    <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+    
+    <!-- appkey needs to be changed to your own one -->
+    <script async src="//apps.8thwall.com/xrweb?appKey=n64F9fwPYTWUK1DtFFS1DVcJPfutKWUVNlePoSp4buO4am9FJ22TsEXSZvW9JCHwqk8hAZ"></script>
+  </body>
+</html>
