@@ -9,6 +9,8 @@ const halfLength = gridSize * spacing / 2
 const numObjs = gridSize * gridSize
 const geom = new THREE.DodecahedronBufferGeometry(1)
 
+let hasShotBeenTaken = false
+
 const buildGrid = group => {
   // Build grid of meshes with varying opacity
   for (let y = 0; y < gridSize; y++) {
@@ -61,15 +63,18 @@ const scenePipelineModule = () => {
 
         // Take screenshot on touch
         canvasEl.addEventListener('touchstart', () => {
-          XR.canvasScreenshot().takeScreenshot().then(
-            data => {
-              photo.src = 'data:image/jpeg;base64,' + data
-              photoContainerEl.style.display = 'block'
-            },
-            error => {
-              console.error(error)
-              // Handle screenshot error.
-            })
+          if (!hasShotBeenTaken) {
+            hasShotBeenTaken = true
+            XR.canvasScreenshot().takeScreenshot().then(
+              data => {
+                photo.src = 'data:image/jpeg;base64,' + data
+                photoContainerEl.style.display = 'block'
+              },
+              error => {
+                console.error(error)
+                // Handle screenshot error.
+              })
+          }
         })
       },
     }
